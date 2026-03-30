@@ -16,4 +16,14 @@ class ScoreboardTest {
         assertEquals(1, summary.size());
         assertEquals("Mexico 0 - Canada 0", summary.get(0));
     }
+
+    @Test
+    void shouldUpdateScoreOfExistingMatch() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Mexico", "Canada");
+        scoreboard.updateScore("Mexico", "Canada", 0, 5);
+
+        List<String> summary = scoreboard.getSummary();
+        assertEquals("Mexico 0 - Canada 5", summary.get(0));
+    }
 }
