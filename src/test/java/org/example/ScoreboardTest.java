@@ -1,7 +1,9 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.List;
 
 class ScoreboardTest {
@@ -26,5 +28,17 @@ class ScoreboardTest {
         List<String> summary = scoreboard.getSummary();
 
         assertEquals("Mexico 0 - Canada 5", summary.get(0));
+    }
+
+    @Test
+    void shouldRemoveMatchFromScoreboardWhenFinished() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Mexico", "Canada");
+
+        assertEquals(1, scoreboard.getSummary().size());
+
+        scoreboard.finishMatch("Mexico", "Canada");
+
+        assertEquals(0, scoreboard.getSummary().size());
     }
 }
