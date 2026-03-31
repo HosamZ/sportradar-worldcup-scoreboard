@@ -19,8 +19,17 @@ public class Match {
         this.awayScore = awayScore;
     }
 
-    public String getHomeTeam() { return homeTeam; }
-    public String getAwayTeam() { return awayTeam; }
+    public int getTotalScore() {
+        return homeScore + awayScore;
+    }
+
+    public String getHomeTeam() {
+        return homeTeam;
+    }
+
+    public String getAwayTeam() {
+        return awayTeam;
+    }
 
     @Override
     public String toString() {

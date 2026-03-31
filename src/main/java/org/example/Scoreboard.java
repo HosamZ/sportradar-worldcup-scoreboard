@@ -31,11 +31,19 @@ public class Scoreboard {
                 .findFirst();
     }
 
-    public List<String> getSummary() {
-        List<String> summary = new ArrayList<>();
-        for (Match match : matches) {
-            summary.add(match.toString());
-        }
-        return summary;
+    public List<Match> getSummary() {
+        List<Match> matchList = new ArrayList<>(this.matches);
+
+        matchList.sort((match1, match2) -> {
+            int scoreCompare = Integer.compare(match2.getTotalScore(), match1.getTotalScore());
+
+            if (scoreCompare != 0) {
+                return scoreCompare;
+            }
+
+            return Integer.compare(this.matches.indexOf(match2), this.matches.indexOf(match1));
+        });
+
+        return matchList;
     }
 }
